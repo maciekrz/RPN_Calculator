@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\Users\PC Maciek\Desktop\focp_project\focp_project\main.cpp(77,10): warning C4101: "notation": lokalna zmienna, do której nie istnieje odwołanie
+C:\Users\PC Maciek\Desktop\focp_project\focp_project\functions.h(159,26): warning C4834: odrzucanie zwracanej wartości funkcji z atrybutem „nodiscard”
+C:\Users\PC Maciek\Desktop\focp_project\focp_project\main.cpp(93): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „double calcRPN<std::istream_iterator<std::string,char,std::char_traits<char>,ptrdiff_t>>(ITERATOR,ITERATOR)” funkcji szablon
+          with
+          [
+              ITERATOR=std::istream_iterator<std::string,char,std::char_traits<char>,ptrdiff_t>
+          ]
+  focp_project.vcxproj -> C:\Users\PC Maciek\Desktop\focp_project\Debug\focp_project.exe
