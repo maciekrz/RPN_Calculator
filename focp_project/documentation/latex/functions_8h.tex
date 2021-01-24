@@ -1,0 +1,328 @@
+\hypertarget{functions_8h}{}\doxysection{focp\+\_\+project/functions.h File Reference}
+\label{functions_8h}\index{focp\_project/functions.h@{focp\_project/functions.h}}
+{\ttfamily \#include $<$stack$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Struct for storing operators and expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{functions_8h_aeff06c2cfc0eebe7b5784f7c6f068ecd}{Precedence\+Less}} (const string \&left, const string \&right, bool assoc)
+\begin{DoxyCompactList}\small\item\em Function for determining precedence of operations \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8h_a744b250c5f5ba62257a6e88242e21ec4}{Parenthesize}} (\mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $\ast$old, const string \&token, bool assoc)
+\begin{DoxyCompactList}\small\item\em Function to parenthesize low-\/precedence operations \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8h_a4bf8d91ffd19fe96b53ef4def379115f}{Add\+Token}} (stack$<$ \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $>$ $\ast$stack, const string \&token)
+\begin{DoxyCompactList}\small\item\em Function to add operation sign to the expression \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{functions_8h_a3dd474492698683f9b1cc4ab1d9ddc34}{To\+Infix}} (const string \&src)
+\begin{DoxyCompactList}\small\item\em Function to parse postfix notation into infix notation \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\double \mbox{\hyperlink{functions_8h_aa4d065273e6e49d3154988409a5919b9}{calc\+R\+PN}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
+\begin{DoxyCompactList}\small\item\em Function to calculate postfix expression \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8h_ae19a8f78a2e1ea324887e50eebd3acc3}{Is\+Operator}} (string C)
+\begin{DoxyCompactList}\small\item\em Function to verify whether a character/word is operator symbol or not. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8h_af42b705cd51614958bfaabc2fb068472}{Is\+Opening\+Parenthesis}} (string C)
+\begin{DoxyCompactList}\small\item\em Function to verify whether a character is an opening parenthesis \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8h_a2c7719c6f20164255a0b97a82e3f8ce5}{Is\+Closing\+Parenthesis}} (string C)
+\begin{DoxyCompactList}\small\item\em Function to verify whether a character is a closing parenthesis \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8h_ac40cb97e8b2a32ae1d32167a6ea1535c}{Is\+Right\+Associative}} (string op)
+\begin{DoxyCompactList}\small\item\em Function to verify whether an operator is right associative or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{functions_8h_a7da6c3353063a6ef425710359b6a0d73}{Get\+Operator\+Weight}} (string op)
+\begin{DoxyCompactList}\small\item\em Function to get weight of an operator. An operator with higher weight will have higher precedence. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{functions_8h_af5c5c5cec7c74bc35a324f812798e90d}{Has\+Higher\+Precedence}} (string op1, string op2)
+\begin{DoxyCompactList}\small\item\em Function to determine precedence between two operators \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\string \mbox{\hyperlink{functions_8h_aa230ecf37fab7fff749ada74883969db}{To\+Postfix}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
+\begin{DoxyCompactList}\small\item\em Function to parse infix notation into postfix notation \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\bool \mbox{\hyperlink{functions_8h_a9fe90bedc87dc532668f46aa456b7cf2}{is\+R\+PN}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
+\begin{DoxyCompactList}\small\item\em Function to check notation. True if postfix, false if infix \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\bool \mbox{\hyperlink{functions_8h_a42d75d6c024c69ac905ab5990207e397}{is\+Correct}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
+\begin{DoxyCompactList}\small\item\em Function to check if the input is correct \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{functions_8h_a4bf8d91ffd19fe96b53ef4def379115f}\label{functions_8h_a4bf8d91ffd19fe96b53ef4def379115f}} 
+\index{functions.h@{functions.h}!AddToken@{AddToken}}
+\index{AddToken@{AddToken}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{AddToken()}{AddToken()}}
+{\footnotesize\ttfamily void Add\+Token (\begin{DoxyParamCaption}\item[{stack$<$ \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $>$ $\ast$}]{stack,  }\item[{const string \&}]{token }\end{DoxyParamCaption})}
+
+
+
+Function to add operation sign to the expression 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stack} & stack that holds items of \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} struct\\
+\hline
+{\em token} & operation sign\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_aa4d065273e6e49d3154988409a5919b9}\label{functions_8h_aa4d065273e6e49d3154988409a5919b9}} 
+\index{functions.h@{functions.h}!calcRPN@{calcRPN}}
+\index{calcRPN@{calcRPN}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{calcRPN()}{calcRPN()}}
+{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
+double calc\+R\+PN (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
+
+
+
+Function to calculate postfix expression 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I\+T\+E\+R\+A\+T\+OR} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & iterator to sweep through expression\\
+\hline
+{\em end} & end of the expression\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of the expression
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_a7da6c3353063a6ef425710359b6a0d73}\label{functions_8h_a7da6c3353063a6ef425710359b6a0d73}} 
+\index{functions.h@{functions.h}!GetOperatorWeight@{GetOperatorWeight}}
+\index{GetOperatorWeight@{GetOperatorWeight}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{GetOperatorWeight()}{GetOperatorWeight()}}
+{\footnotesize\ttfamily int Get\+Operator\+Weight (\begin{DoxyParamCaption}\item[{string}]{op }\end{DoxyParamCaption})}
+
+
+
+Function to get weight of an operator. An operator with higher weight will have higher precedence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & operator\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+operator\textquotesingle{}s weight
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_af5c5c5cec7c74bc35a324f812798e90d}\label{functions_8h_af5c5c5cec7c74bc35a324f812798e90d}} 
+\index{functions.h@{functions.h}!HasHigherPrecedence@{HasHigherPrecedence}}
+\index{HasHigherPrecedence@{HasHigherPrecedence}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{HasHigherPrecedence()}{HasHigherPrecedence()}}
+{\footnotesize\ttfamily bool Has\+Higher\+Precedence (\begin{DoxyParamCaption}\item[{string}]{op1,  }\item[{string}]{op2 }\end{DoxyParamCaption})}
+
+
+
+Function to determine precedence between two operators 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op1} & first operator\\
+\hline
+{\em op2} & second operator\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_a2c7719c6f20164255a0b97a82e3f8ce5}\label{functions_8h_a2c7719c6f20164255a0b97a82e3f8ce5}} 
+\index{functions.h@{functions.h}!IsClosingParenthesis@{IsClosingParenthesis}}
+\index{IsClosingParenthesis@{IsClosingParenthesis}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{IsClosingParenthesis()}{IsClosingParenthesis()}}
+{\footnotesize\ttfamily bool Is\+Closing\+Parenthesis (\begin{DoxyParamCaption}\item[{string}]{C }\end{DoxyParamCaption})}
+
+
+
+Function to verify whether a character is a closing parenthesis 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s a closing parenthesis
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_a42d75d6c024c69ac905ab5990207e397}\label{functions_8h_a42d75d6c024c69ac905ab5990207e397}} 
+\index{functions.h@{functions.h}!isCorrect@{isCorrect}}
+\index{isCorrect@{isCorrect}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{isCorrect()}{isCorrect()}}
+{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
+bool is\+Correct (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
+
+
+
+Function to check if the input is correct 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I\+T\+E\+R\+A\+T\+OR} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & iterator to sweep through expression\\
+\hline
+{\em end} & end of the expression\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if expression is correct
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_af42b705cd51614958bfaabc2fb068472}\label{functions_8h_af42b705cd51614958bfaabc2fb068472}} 
+\index{functions.h@{functions.h}!IsOpeningParenthesis@{IsOpeningParenthesis}}
+\index{IsOpeningParenthesis@{IsOpeningParenthesis}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{IsOpeningParenthesis()}{IsOpeningParenthesis()}}
+{\footnotesize\ttfamily bool Is\+Opening\+Parenthesis (\begin{DoxyParamCaption}\item[{string}]{C }\end{DoxyParamCaption})}
+
+
+
+Function to verify whether a character is an opening parenthesis 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & a character\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s an opening parenthesis
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_ae19a8f78a2e1ea324887e50eebd3acc3}\label{functions_8h_ae19a8f78a2e1ea324887e50eebd3acc3}} 
+\index{functions.h@{functions.h}!IsOperator@{IsOperator}}
+\index{IsOperator@{IsOperator}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{IsOperator()}{IsOperator()}}
+{\footnotesize\ttfamily bool Is\+Operator (\begin{DoxyParamCaption}\item[{string}]{C }\end{DoxyParamCaption})}
+
+
+
+Function to verify whether a character/word is operator symbol or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & a character/word\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s an operator
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_ac40cb97e8b2a32ae1d32167a6ea1535c}\label{functions_8h_ac40cb97e8b2a32ae1d32167a6ea1535c}} 
+\index{functions.h@{functions.h}!IsRightAssociative@{IsRightAssociative}}
+\index{IsRightAssociative@{IsRightAssociative}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{IsRightAssociative()}{IsRightAssociative()}}
+{\footnotesize\ttfamily bool Is\+Right\+Associative (\begin{DoxyParamCaption}\item[{string}]{op }\end{DoxyParamCaption})}
+
+
+
+Function to verify whether an operator is right associative or not. 
+
+right-\/associative means that the operations are grouped from the right.
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & operator\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_a9fe90bedc87dc532668f46aa456b7cf2}\label{functions_8h_a9fe90bedc87dc532668f46aa456b7cf2}} 
+\index{functions.h@{functions.h}!isRPN@{isRPN}}
+\index{isRPN@{isRPN}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{isRPN()}{isRPN()}}
+{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
+bool is\+R\+PN (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
+
+
+
+Function to check notation. True if postfix, false if infix 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I\+T\+E\+R\+A\+T\+OR} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & iterator to sweep through expression\\
+\hline
+{\em end} & end of the expression\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if expression is in postfix, false if it\textquotesingle{}s in infix
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_a744b250c5f5ba62257a6e88242e21ec4}\label{functions_8h_a744b250c5f5ba62257a6e88242e21ec4}} 
+\index{functions.h@{functions.h}!Parenthesize@{Parenthesize}}
+\index{Parenthesize@{Parenthesize}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{Parenthesize()}{Parenthesize()}}
+{\footnotesize\ttfamily void Parenthesize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $\ast$}]{old,  }\item[{const string \&}]{token,  }\item[{bool}]{assoc }\end{DoxyParamCaption})}
+
+
+
+Function to parenthesize low-\/precedence operations 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old} & old expression without parenthesizes\\
+\hline
+{\em token} & operation sign\\
+\hline
+{\em assoc} & a bool variable to determine if the operation is associative\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_aeff06c2cfc0eebe7b5784f7c6f068ecd}\label{functions_8h_aeff06c2cfc0eebe7b5784f7c6f068ecd}} 
+\index{functions.h@{functions.h}!PrecedenceLess@{PrecedenceLess}}
+\index{PrecedenceLess@{PrecedenceLess}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{PrecedenceLess()}{PrecedenceLess()}}
+{\footnotesize\ttfamily bool Precedence\+Less (\begin{DoxyParamCaption}\item[{const string \&}]{left,  }\item[{const string \&}]{right,  }\item[{bool}]{assoc }\end{DoxyParamCaption})}
+
+
+
+Function for determining precedence of operations 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & list of operators\\
+\hline
+{\em right} & list of precedence\\
+\hline
+{\em assoc} & a bool variable to determine if the operation is associative\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_a3dd474492698683f9b1cc4ab1d9ddc34}\label{functions_8h_a3dd474492698683f9b1cc4ab1d9ddc34}} 
+\index{functions.h@{functions.h}!ToInfix@{ToInfix}}
+\index{ToInfix@{ToInfix}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{ToInfix()}{ToInfix()}}
+{\footnotesize\ttfamily string To\+Infix (\begin{DoxyParamCaption}\item[{const string \&}]{src }\end{DoxyParamCaption})}
+
+
+
+Function to parse postfix notation into infix notation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & expression to parse\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+parsed expression
+\end{DoxyReturn}
+\mbox{\Hypertarget{functions_8h_aa230ecf37fab7fff749ada74883969db}\label{functions_8h_aa230ecf37fab7fff749ada74883969db}} 
+\index{functions.h@{functions.h}!ToPostfix@{ToPostfix}}
+\index{ToPostfix@{ToPostfix}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{ToPostfix()}{ToPostfix()}}
+{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
+string To\+Postfix (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
+
+
+
+Function to parse infix notation into postfix notation 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I\+T\+E\+R\+A\+T\+OR} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em iter} & iterator to sweep through expression\\
+\hline
+{\em end} & end of the expression\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+parsed expression
+\end{DoxyReturn}

@@ -14,11 +14,11 @@
 
 using namespace std;
 
-string ToInfix(const string& src);
-template <typename ITERATOR>
-double calcRPN(ITERATOR iter, ITERATOR end);
-template <typename ITERATOR>
-string ToPostfix(ITERATOR iter, ITERATOR end);
+//string ToInfix(const string& src);
+//template <typename ITERATOR>
+//double calcRPN(ITERATOR iter, ITERATOR end);
+//template <typename ITERATOR>
+//string ToPostfix(ITERATOR iter, ITERATOR end);
 
 
 static void show_usage(std::string name)
@@ -44,7 +44,13 @@ void printArgs(int argc, char** argv)
 
 int main(int argc, char* argv[])
 {
-    
+    bool o_flag = false;
+    bool i_flag = false;
+    bool r_flag = false;
+    bool c_flag = false;
+    bool h_flag = true;
+
+
     printArgs(argc, argv);
 
     if (argc < 5) {
@@ -59,56 +65,157 @@ int main(int argc, char* argv[])
         if (argument == "-i" || argument == "--input")
         {
             input = argv[i + 1];
-
-            std::cout << "Input: " << input << "\n";
+            //i_flag = true;
+            std::cout << "Input: " << input << "\n\n";
         }
         else if (argument == "-o" || argument == "--output")
         {
             output = argv[i + 1];
-            std::cout << "Output: " << output << "\n";
+            o_flag = true;
+            std::cout << "Output: " << output << "\n\n";
+        }
+        else if (argument == "-r")
+        {
+            r_flag = true;
+            cout << "Output notation: POSTFIX  (default is INFIX)\n\n";
+        }
+        else if (argument == "-c")
+        {
+            c_flag = true;
+            cout << "Interactive mode\n\n";
+        }
+        else if (argument == "-h")
+        {
+            cout << "\nAvailable flags:\n -i\tinput file path\n -o\toutput file path\n -c\tinteractive mode\n -r\tif present, expressions are written to output file in POSTFIX notation\n\n";
         }
     }
 
-    std::cout << "Done\n\n\n";
+    std::cout << "\nDone\n";
 
-    ofstream outputfile;
-    outputfile.open(output);
-    
-    char notation;
-    string expr;
+    ofstream outputfile(output);
+    string expr = "";
+    system("pause");
+    cout << "\n";
 
-    
-
-    cout << "Example of postfix notation:\t2 1 - 3 + \nExample of infix notation:\t2 - 1 + 3 \n\nType '-q' to exit the program\n\n";
-
-    while (expr != "-q")
+    if (c_flag == true && i_flag == false)
     {
-            cout << "Postfix -> infix\n> ";
+        cout << "Example of postfix notation:\t2 1 - 3 + \nExample of infix notation:\t2 - 1 + 3\n\nAvailable operations:\n+\t-\t*\t/\n^\tsqrt\tsin\tcos\n\nUse of round brackets is also available\n\nType '-q' to exit the program\n\n";
+        while (expr != "-q")
+        {
             getline(cin, expr);
-            
-            if (expr != "-q")
+            stringstream sstream_to_check_amount1{ expr };
+            if (expr != "-q" && !expr.empty())
             {
-                stringstream s1{ expr };
-                // parsing postfix -> infix, calculating the result from postfix notation
-                cout << " " << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{s1}, {}) << "\n\n";
-
-                // outputfile << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{s1}, {}) << "\n";
-
-                cout << "Infix -> postfix\n> ";
-                getline(cin, expr);
-
-                if (expr != "-q")
+                if (isCorrect(istream_iterator<string>{sstream_to_check_amount1}, {}))
                 {
-                    stringstream s2{ expr };
-                    string s3 = ToPostfix(istream_iterator<string>{s2}, {});
-                    stringstream s4{ s3 };
 
-                    // parsing infix -> postfix, calculating the result from infix notation
-                    cout << s3 << "  =  " << calcRPN(istream_iterator<string>{s4}, {}) << "\n\n";
+                    stringstream sstream_to_check1{ expr };
+                    stringstream sstream_to_screen1{ expr };
+                    stringstream sstream_to_file1{ expr };
+                    stringstream sstream_to_string{ expr };
+                    string sstream_to_postfix = ToPostfix(istream_iterator<string>{sstream_to_string}, {});
+                    stringstream sstream_to_postfix2{ sstream_to_postfix };
+                    stringstream sstream_to_postfix3{ sstream_to_postfix };
+                    if (isRPN(istream_iterator<string>{sstream_to_check1}, {}))
+                    {
+                        cout << "POSTFIX  ->  INFIX\n";
+                        // parsing postfix -> infix, calculating the result from postfix notation
+                        cout << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_screen1}, {}) << "\n\n";
+                        if (o_flag == true)
+                            if (r_flag == true)
+                                outputfile << expr << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                            else
+                                outputfile << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                    }
+                    else
+                    {
 
-                    // outputfile << s3 << "  =  " << calcRPN(istream_iterator<string>{s4}, {}) << "\n\n";
+                        cout << "INFIX  ->  POSTFIX\n";
+                        // parsing infix -> postfix, calculating the result from infix notation
+                        cout << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix2}, {}) << "\n\n";
+                        if (o_flag == true)
+                            if (r_flag == true)
+                                outputfile << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                            else
+                                outputfile << expr << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                    }
+                }
+                else
+                {
+                    cout << "***Error: incorrect input! (" << expr << ") Check used operators or the amount of operands and operators!***\n\n";
+                    if (o_flag == true)
+                        outputfile << expr << "\t\t~~\tincorrect input!\n";
                 }
             }
+        }
+    }
+
+    if (i_flag == true)
+    {
+        ifstream inputfile(input);
+        int line_count = 1;
+        while (getline(inputfile, expr))
+        {
+            stringstream sstream_to_check_amount1{ expr };
+
+            if (isCorrect(istream_iterator<string>{sstream_to_check_amount1}, {}))
+            {
+                stringstream sstream_to_check1{ expr };
+                stringstream sstream_to_screen1{ expr };
+                stringstream sstream_to_file1{ expr };
+                stringstream sstream_to_string{ expr };
+                string sstream_to_postfix = ToPostfix(istream_iterator<string>{sstream_to_string}, {});
+                stringstream sstream_to_postfix2{ sstream_to_postfix };
+                stringstream sstream_to_postfix3{ sstream_to_postfix };
+                if (isRPN(istream_iterator<string>{sstream_to_check1}, {}))
+                {
+                    if (c_flag == true)
+                    {
+                        cout << "POSTFIX  ->  INFIX\n" << expr << " = ";
+                        // parsing postfix -> infix, calculating the result from postfix notation
+                        cout << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_screen1}, {}) << "\n\n";
+                    }
+                    if (o_flag == true)
+                    {
+                        if (r_flag == true)
+                            outputfile << expr << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                        else
+                            outputfile << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                    }
+                }
+                else
+                {
+                    if (c_flag == true)
+                    {
+                        cout << "INFIX  ->  POSTFIX\n" << expr << " = ";
+                        // parsing infix -> postfix, calculating the result from infix notation
+                        cout << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix2}, {}) << "\n\n";
+                    }
+                    if (o_flag == true)
+                    {
+                        if (r_flag == true)
+                            outputfile << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                        else
+                            outputfile << expr << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                    }
+                }
+            }
+            else
+            {
+                cout << "***Error: incorrect input at line " << line_count << "! (" << expr << ") Check used operators or the amount of operands and operators!***\n\n";
+                if (o_flag == true)
+                    outputfile << expr << "\t\t~~\tincorrect input!\n";
+            }
+            line_count++;
+            system("pause");
+            cout << "\n";
+        }            
+    }
+    
+
+    if (i_flag == false && c_flag == false)
+    {
+        cout << "\nYou haven't chosen input type (interactive or from file).\nRestart the program with one of those.\n";
     }
     
     outputfile.close();
