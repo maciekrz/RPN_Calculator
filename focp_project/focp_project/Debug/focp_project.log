@@ -1,33 +1,6 @@
 ﻿  functions.cpp
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(18,1): error C2011: "Entry_'': "struct" wpisz ponownie definicję
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(32,8): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(33,12): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(33,31): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(40,27): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(44,18): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(46,21): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(46,47): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(47,21): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(57,18): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(60,18): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(62,21): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(62,33): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(62,65): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(63,21): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.cpp(84,23): error C2027: wykorzystanie niezdefiniowanego przez użytkownika typu "Entry_"
-C:\Users\PC Maciek\Desktop\RPN_calculator\RPN_Calculator\focp_project\focp_project\functions.h(13): message : zobacz deklarację „Entry_”
+  main.cpp
+  Generowanie kodu...
+C:\Users\PC Maciek\Desktop\git\RPN_Calculator\focp_project\focp_project\functions.h(377): warning C4715: "isCorrect<std::istream_iterator<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,char,std::char_traits<char>,int> >”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\PC Maciek\Desktop\git\RPN_Calculator\focp_project\focp_project\functions.h(114): warning C4715: "<lambda_adf64b67354abef0b19e34adc8b49b3e>::operator()”: niewszystkie ścieżki kodu zwracają wartość
+  focp_project.vcxproj -> C:\Users\PC Maciek\Desktop\git\RPN_Calculator\focp_project\Debug\focp_project.exe

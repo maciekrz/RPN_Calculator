@@ -1,0 +1,8 @@
+2 5 + 45 cos -  =  6.29289
+45 sin 45 cos /  =  1
+2.0 5.0 + 3.0 - 25.0 sqrt *  =  20
+2.0 sqrt  =  1.41421
+3 sqrt  =  1.73205
+2 3 + 4		~~	incorrect input!
+2 + + 5		~~	incorrect input!
+2 % 4		~~	incorrect input!

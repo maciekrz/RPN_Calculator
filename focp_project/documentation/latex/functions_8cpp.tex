@@ -1,28 +1,17 @@
-\hypertarget{functions_8cpp}{}\doxysection{focp\+\_\+project/functions.cpp File Reference}
-\label{functions_8cpp}\index{focp\_project/functions.cpp@{focp\_project/functions.cpp}}
-{\ttfamily \#include $<$iostream$>$}\newline
-{\ttfamily \#include $<$iomanip$>$}\newline
-{\ttfamily \#include $<$fstream$>$}\newline
-{\ttfamily \#include $<$stack$>$}\newline
-{\ttfamily \#include $<$sstream$>$}\newline
-{\ttfamily \#include $<$cmath$>$}\newline
-{\ttfamily \#include $<$map$>$}\newline
-{\ttfamily \#include $<$set$>$}\newline
-{\ttfamily \#include $<$iterator$>$}\newline
+\hypertarget{functions_8cpp}{}\doxysection{C\+:/\+Users/\+PC Maciek/\+Desktop/git/\+R\+P\+N\+\_\+\+Calculator/focp\+\_\+project/focp\+\_\+project/functions.cpp File Reference}
+\label{functions_8cpp}\index{C:/Users/PC Maciek/Desktop/git/RPN\_Calculator/focp\_project/focp\_project/functions.cpp@{C:/Users/PC Maciek/Desktop/git/RPN\_Calculator/focp\_project/focp\_project/functions.cpp}}
 {\ttfamily \#include \char`\"{}functions.\+h\char`\"{}}\newline
-\doxysubsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}}
-\begin{DoxyCompactList}\small\item\em Struct for storing operators and expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{functions_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}}~3.\+14159265
-\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{functions_8cpp_ab1a053014ec04d12d66aa980ad220d38}{print\+Args}} (int argc, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{functions_8cpp_afda48cb0ef51235f105cd13387acc280}{show\+Args}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, bool $\ast$o\+\_\+flag, bool $\ast$i\+\_\+flag, bool $\ast$r\+\_\+flag, bool $\ast$c\+\_\+flag, bool $\ast$h\+\_\+flag, string $\ast$input, string $\ast$output)
+\item 
+void \mbox{\hyperlink{functions_8cpp_a360fc82c7bf8519d5751aa92654aa569}{interactive\+Mode}} (bool o\+\_\+flag, bool r\+\_\+flag, string output)
+\begin{DoxyCompactList}\small\item\em Function for interactive mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8cpp_a21a78107b79404d4b74d69d7b89c065c}{input\+Mode}} (bool o\+\_\+flag, bool r\+\_\+flag, bool c\+\_\+flag, string input, string output)
+\begin{DoxyCompactList}\small\item\em Function for input from file. With c\+\_\+flag being true, expressions with results are shown on screen. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{functions_8cpp_aeff06c2cfc0eebe7b5784f7c6f068ecd}{Precedence\+Less}} (const string \&left, const string \&right, bool assoc)
 \begin{DoxyCompactList}\small\item\em Function for determining precedence of operations \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{functions_8cpp_a744b250c5f5ba62257a6e88242e21ec4}{Parenthesize}} (\mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $\ast$old, const string \&token, bool assoc)
@@ -31,8 +20,6 @@ void \mbox{\hyperlink{functions_8cpp_a4bf8d91ffd19fe96b53ef4def379115f}{Add\+Tok
 \begin{DoxyCompactList}\small\item\em Function to add operation sign to the expression \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{functions_8cpp_a3dd474492698683f9b1cc4ab1d9ddc34}{To\+Infix}} (const string \&src)
 \begin{DoxyCompactList}\small\item\em Function to parse postfix notation into infix notation \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\double \mbox{\hyperlink{functions_8cpp_aa4d065273e6e49d3154988409a5919b9}{calc\+R\+PN}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
-\begin{DoxyCompactList}\small\item\em Function to calculate postfix expression \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{functions_8cpp_ae19a8f78a2e1ea324887e50eebd3acc3}{Is\+Operator}} (string C)
 \begin{DoxyCompactList}\small\item\em Function to verify whether a character/word is operator symbol or not. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{functions_8cpp_af42b705cd51614958bfaabc2fb068472}{Is\+Opening\+Parenthesis}} (string C)
@@ -44,22 +31,7 @@ bool \mbox{\hyperlink{functions_8cpp_ac40cb97e8b2a32ae1d32167a6ea1535c}{Is\+Righ
 int \mbox{\hyperlink{functions_8cpp_a7da6c3353063a6ef425710359b6a0d73}{Get\+Operator\+Weight}} (string op)
 \begin{DoxyCompactList}\small\item\em Function to get weight of an operator. An operator with higher weight will have higher precedence. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{functions_8cpp_af5c5c5cec7c74bc35a324f812798e90d}{Has\+Higher\+Precedence}} (string op1, string op2)
-\begin{DoxyCompactList}\small\item\em Function to determine precedence between two operators \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\string \mbox{\hyperlink{functions_8cpp_aa230ecf37fab7fff749ada74883969db}{To\+Postfix}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
-\begin{DoxyCompactList}\small\item\em Function to parse infix notation into postfix notation \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\bool \mbox{\hyperlink{functions_8cpp_a9fe90bedc87dc532668f46aa456b7cf2}{is\+R\+PN}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
-\begin{DoxyCompactList}\small\item\em Function to check notation. True if postfix, false if infix \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\bool \mbox{\hyperlink{functions_8cpp_a42d75d6c024c69ac905ab5990207e397}{is\+Correct}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
-\begin{DoxyCompactList}\small\item\em Function to check if the input is correct \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{functions_8cpp_a598a3330b3c21701223ee0ca14316eca}\label{functions_8cpp_a598a3330b3c21701223ee0ca14316eca}} 
-\index{functions.cpp@{functions.cpp}!PI@{PI}}
-\index{PI@{PI}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{PI}{PI}}
-{\footnotesize\ttfamily \#define PI~3.\+14159265}
-
+\begin{DoxyCompactList}\small\item\em Function to determine precedence between two operators \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -80,32 +52,6 @@ Function to add operation sign to the expression
 {\em token} & operation sign\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions_8cpp_aa4d065273e6e49d3154988409a5919b9}\label{functions_8cpp_aa4d065273e6e49d3154988409a5919b9}} 
-\index{functions.cpp@{functions.cpp}!calcRPN@{calcRPN}}
-\index{calcRPN@{calcRPN}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{calcRPN()}{calcRPN()}}
-{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
-double calc\+R\+PN (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
-
-
-
-Function to calculate postfix expression 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em I\+T\+E\+R\+A\+T\+OR} & \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em iter} & iterator to sweep through expression\\
-\hline
-{\em end} & end of the expression\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-result of the expression
-\end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_a7da6c3353063a6ef425710359b6a0d73}\label{functions_8cpp_a7da6c3353063a6ef425710359b6a0d73}} 
 \index{functions.cpp@{functions.cpp}!GetOperatorWeight@{GetOperatorWeight}}
 \index{GetOperatorWeight@{GetOperatorWeight}!functions.cpp@{functions.cpp}}
@@ -141,6 +87,48 @@ Function to determine precedence between two operators
 {\em op2} & second operator\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_a21a78107b79404d4b74d69d7b89c065c}\label{functions_8cpp_a21a78107b79404d4b74d69d7b89c065c}} 
+\index{functions.cpp@{functions.cpp}!inputMode@{inputMode}}
+\index{inputMode@{inputMode}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{inputMode()}{inputMode()}}
+{\footnotesize\ttfamily void input\+Mode (\begin{DoxyParamCaption}\item[{bool}]{o\+\_\+flag,  }\item[{bool}]{r\+\_\+flag,  }\item[{bool}]{c\+\_\+flag,  }\item[{string}]{input,  }\item[{string}]{output }\end{DoxyParamCaption})}
+
+
+
+Function for input from file. With c\+\_\+flag being true, expressions with results are shown on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+\_\+flag} & output flag\\
+\hline
+{\em r\+\_\+flag} & notation flag\\
+\hline
+{\em c\+\_\+flag} & mode flag\\
+\hline
+{\em input} & input directory\\
+\hline
+{\em output} & output directory\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_a360fc82c7bf8519d5751aa92654aa569}\label{functions_8cpp_a360fc82c7bf8519d5751aa92654aa569}} 
+\index{functions.cpp@{functions.cpp}!interactiveMode@{interactiveMode}}
+\index{interactiveMode@{interactiveMode}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{interactiveMode()}{interactiveMode()}}
+{\footnotesize\ttfamily void interactive\+Mode (\begin{DoxyParamCaption}\item[{bool}]{o\+\_\+flag,  }\item[{bool}]{r\+\_\+flag,  }\item[{string}]{output }\end{DoxyParamCaption})}
+
+
+
+Function for interactive mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+\_\+flag} & output flag\\
+\hline
+{\em r\+\_\+flag} & notation type flag\\
+\hline
+{\em output} & output directory\\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{functions_8cpp_a2c7719c6f20164255a0b97a82e3f8ce5}\label{functions_8cpp_a2c7719c6f20164255a0b97a82e3f8ce5}} 
 \index{functions.cpp@{functions.cpp}!IsClosingParenthesis@{IsClosingParenthesis}}
 \index{IsClosingParenthesis@{IsClosingParenthesis}!functions.cpp@{functions.cpp}}
@@ -158,32 +146,6 @@ Function to verify whether a character is a closing parenthesis
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if it\textquotesingle{}s a closing parenthesis
-\end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_a42d75d6c024c69ac905ab5990207e397}\label{functions_8cpp_a42d75d6c024c69ac905ab5990207e397}} 
-\index{functions.cpp@{functions.cpp}!isCorrect@{isCorrect}}
-\index{isCorrect@{isCorrect}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{isCorrect()}{isCorrect()}}
-{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
-bool is\+Correct (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
-
-
-
-Function to check if the input is correct 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em I\+T\+E\+R\+A\+T\+OR} & \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em iter} & iterator to sweep through expression\\
-\hline
-{\em end} & end of the expression\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if expression is correct
 \end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_af42b705cd51614958bfaabc2fb068472}\label{functions_8cpp_af42b705cd51614958bfaabc2fb068472}} 
 \index{functions.cpp@{functions.cpp}!IsOpeningParenthesis@{IsOpeningParenthesis}}
@@ -238,32 +200,6 @@ right-\/associative means that the operations are grouped from the right.
 {\em op} & operator\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{functions_8cpp_a9fe90bedc87dc532668f46aa456b7cf2}\label{functions_8cpp_a9fe90bedc87dc532668f46aa456b7cf2}} 
-\index{functions.cpp@{functions.cpp}!isRPN@{isRPN}}
-\index{isRPN@{isRPN}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{isRPN()}{isRPN()}}
-{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
-bool is\+R\+PN (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
-
-
-
-Function to check notation. True if postfix, false if infix 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em I\+T\+E\+R\+A\+T\+OR} & \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em iter} & iterator to sweep through expression\\
-\hline
-{\em end} & end of the expression\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true if expression is in postfix, false if it\textquotesingle{}s in infix
-\end{DoxyReturn}
 \mbox{\Hypertarget{functions_8cpp_a744b250c5f5ba62257a6e88242e21ec4}\label{functions_8cpp_a744b250c5f5ba62257a6e88242e21ec4}} 
 \index{functions.cpp@{functions.cpp}!Parenthesize@{Parenthesize}}
 \index{Parenthesize@{Parenthesize}!functions.cpp@{functions.cpp}}
@@ -302,6 +238,18 @@ Function for determining precedence of operations
 {\em assoc} & a bool variable to determine if the operation is associative\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{functions_8cpp_ab1a053014ec04d12d66aa980ad220d38}\label{functions_8cpp_ab1a053014ec04d12d66aa980ad220d38}} 
+\index{functions.cpp@{functions.cpp}!printArgs@{printArgs}}
+\index{printArgs@{printArgs}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{printArgs()}{printArgs()}}
+{\footnotesize\ttfamily void print\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{functions_8cpp_afda48cb0ef51235f105cd13387acc280}\label{functions_8cpp_afda48cb0ef51235f105cd13387acc280}} 
+\index{functions.cpp@{functions.cpp}!showArgs@{showArgs}}
+\index{showArgs@{showArgs}!functions.cpp@{functions.cpp}}
+\doxysubsubsection{\texorpdfstring{showArgs()}{showArgs()}}
+{\footnotesize\ttfamily void show\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{bool $\ast$}]{o\+\_\+flag,  }\item[{bool $\ast$}]{i\+\_\+flag,  }\item[{bool $\ast$}]{r\+\_\+flag,  }\item[{bool $\ast$}]{c\+\_\+flag,  }\item[{bool $\ast$}]{h\+\_\+flag,  }\item[{string $\ast$}]{input,  }\item[{string $\ast$}]{output }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{functions_8cpp_a3dd474492698683f9b1cc4ab1d9ddc34}\label{functions_8cpp_a3dd474492698683f9b1cc4ab1d9ddc34}} 
 \index{functions.cpp@{functions.cpp}!ToInfix@{ToInfix}}
 \index{ToInfix@{ToInfix}!functions.cpp@{functions.cpp}}
@@ -315,32 +263,6 @@ Function to parse postfix notation into infix notation
 
 \begin{DoxyParams}{Parameters}
 {\em src} & expression to parse\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-parsed expression
-\end{DoxyReturn}
-\mbox{\Hypertarget{functions_8cpp_aa230ecf37fab7fff749ada74883969db}\label{functions_8cpp_aa230ecf37fab7fff749ada74883969db}} 
-\index{functions.cpp@{functions.cpp}!ToPostfix@{ToPostfix}}
-\index{ToPostfix@{ToPostfix}!functions.cpp@{functions.cpp}}
-\doxysubsubsection{\texorpdfstring{ToPostfix()}{ToPostfix()}}
-{\footnotesize\ttfamily template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ \\
-string To\+Postfix (\begin{DoxyParamCaption}\item[{I\+T\+E\+R\+A\+T\+OR}]{iter,  }\item[{I\+T\+E\+R\+A\+T\+OR}]{end }\end{DoxyParamCaption})}
-
-
-
-Function to parse infix notation into postfix notation 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em I\+T\+E\+R\+A\+T\+OR} & \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em iter} & iterator to sweep through expression\\
-\hline
-{\em end} & end of the expression\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

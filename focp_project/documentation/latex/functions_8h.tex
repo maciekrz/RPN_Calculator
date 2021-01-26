@@ -1,17 +1,36 @@
-\hypertarget{functions_8h}{}\doxysection{focp\+\_\+project/functions.h File Reference}
-\label{functions_8h}\index{focp\_project/functions.h@{focp\_project/functions.h}}
+\hypertarget{functions_8h}{}\doxysection{C\+:/\+Users/\+PC Maciek/\+Desktop/git/\+R\+P\+N\+\_\+\+Calculator/focp\+\_\+project/focp\+\_\+project/functions.h File Reference}
+\label{functions_8h}\index{C:/Users/PC Maciek/Desktop/git/RPN\_Calculator/focp\_project/focp\_project/functions.h@{C:/Users/PC Maciek/Desktop/git/RPN\_Calculator/focp\_project/focp\_project/functions.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include $<$stack$>$}\newline
 {\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
 {\ttfamily \#include $<$iterator$>$}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_entry__}{Entry\+\_\+}}
 \begin{DoxyCompactList}\small\item\em Struct for storing operators and expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{functions_8h_a598a3330b3c21701223ee0ca14316eca}{PI}}~3.\+14159265358979323846
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{functions_8h_ab1a053014ec04d12d66aa980ad220d38}{print\+Args}} (int argc, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{functions_8h_afda48cb0ef51235f105cd13387acc280}{show\+Args}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, bool $\ast$o\+\_\+flag, bool $\ast$i\+\_\+flag, bool $\ast$r\+\_\+flag, bool $\ast$c\+\_\+flag, bool $\ast$h\+\_\+flag, string $\ast$input, string $\ast$output)
+\item 
+void \mbox{\hyperlink{functions_8h_a360fc82c7bf8519d5751aa92654aa569}{interactive\+Mode}} (bool o\+\_\+flag, bool r\+\_\+flag, string output)
+\begin{DoxyCompactList}\small\item\em Function for interactive mode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{functions_8h_a21a78107b79404d4b74d69d7b89c065c}{input\+Mode}} (bool o\+\_\+flag, bool r\+\_\+flag, bool c\+\_\+flag, string input, string output)
+\begin{DoxyCompactList}\small\item\em Function for input from file. With c\+\_\+flag being true, expressions with results are shown on screen. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{functions_8h_aeff06c2cfc0eebe7b5784f7c6f068ecd}{Precedence\+Less}} (const string \&left, const string \&right, bool assoc)
 \begin{DoxyCompactList}\small\item\em Function for determining precedence of operations \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{functions_8h_a744b250c5f5ba62257a6e88242e21ec4}{Parenthesize}} (\mbox{\hyperlink{struct_entry__}{Entry\+\_\+}} $\ast$old, const string \&token, bool assoc)
@@ -40,6 +59,15 @@ bool \mbox{\hyperlink{functions_8h_af5c5c5cec7c74bc35a324f812798e90d}{Has\+Highe
 \begin{DoxyCompactList}\small\item\em Function to check notation. True if postfix, false if infix \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename I\+T\+E\+R\+A\+T\+OR $>$ }\\bool \mbox{\hyperlink{functions_8h_a42d75d6c024c69ac905ab5990207e397}{is\+Correct}} (I\+T\+E\+R\+A\+T\+OR iter, I\+T\+E\+R\+A\+T\+OR end)
 \begin{DoxyCompactList}\small\item\em Function to check if the input is correct \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{functions_8h_a598a3330b3c21701223ee0ca14316eca}\label{functions_8h_a598a3330b3c21701223ee0ca14316eca}} 
+\index{functions.h@{functions.h}!PI@{PI}}
+\index{PI@{PI}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \#define PI~3.\+14159265358979323846}
+
 
 
 \doxysubsection{Function Documentation}
@@ -119,6 +147,48 @@ Function to determine precedence between two operators
 {\em op1} & first operator\\
 \hline
 {\em op2} & second operator\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_a21a78107b79404d4b74d69d7b89c065c}\label{functions_8h_a21a78107b79404d4b74d69d7b89c065c}} 
+\index{functions.h@{functions.h}!inputMode@{inputMode}}
+\index{inputMode@{inputMode}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{inputMode()}{inputMode()}}
+{\footnotesize\ttfamily void input\+Mode (\begin{DoxyParamCaption}\item[{bool}]{o\+\_\+flag,  }\item[{bool}]{r\+\_\+flag,  }\item[{bool}]{c\+\_\+flag,  }\item[{string}]{input,  }\item[{string}]{output }\end{DoxyParamCaption})}
+
+
+
+Function for input from file. With c\+\_\+flag being true, expressions with results are shown on screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+\_\+flag} & output flag\\
+\hline
+{\em r\+\_\+flag} & notation flag\\
+\hline
+{\em c\+\_\+flag} & mode flag\\
+\hline
+{\em input} & input directory\\
+\hline
+{\em output} & output directory\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_a360fc82c7bf8519d5751aa92654aa569}\label{functions_8h_a360fc82c7bf8519d5751aa92654aa569}} 
+\index{functions.h@{functions.h}!interactiveMode@{interactiveMode}}
+\index{interactiveMode@{interactiveMode}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{interactiveMode()}{interactiveMode()}}
+{\footnotesize\ttfamily void interactive\+Mode (\begin{DoxyParamCaption}\item[{bool}]{o\+\_\+flag,  }\item[{bool}]{r\+\_\+flag,  }\item[{string}]{output }\end{DoxyParamCaption})}
+
+
+
+Function for interactive mode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+\_\+flag} & output flag\\
+\hline
+{\em r\+\_\+flag} & notation type flag\\
+\hline
+{\em output} & output directory\\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{functions_8h_a2c7719c6f20164255a0b97a82e3f8ce5}\label{functions_8h_a2c7719c6f20164255a0b97a82e3f8ce5}} 
@@ -282,6 +352,18 @@ Function for determining precedence of operations
 {\em assoc} & a bool variable to determine if the operation is associative\\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{functions_8h_ab1a053014ec04d12d66aa980ad220d38}\label{functions_8h_ab1a053014ec04d12d66aa980ad220d38}} 
+\index{functions.h@{functions.h}!printArgs@{printArgs}}
+\index{printArgs@{printArgs}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{printArgs()}{printArgs()}}
+{\footnotesize\ttfamily void print\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{functions_8h_afda48cb0ef51235f105cd13387acc280}\label{functions_8h_afda48cb0ef51235f105cd13387acc280}} 
+\index{functions.h@{functions.h}!showArgs@{showArgs}}
+\index{showArgs@{showArgs}!functions.h@{functions.h}}
+\doxysubsubsection{\texorpdfstring{showArgs()}{showArgs()}}
+{\footnotesize\ttfamily void show\+Args (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{bool $\ast$}]{o\+\_\+flag,  }\item[{bool $\ast$}]{i\+\_\+flag,  }\item[{bool $\ast$}]{r\+\_\+flag,  }\item[{bool $\ast$}]{c\+\_\+flag,  }\item[{bool $\ast$}]{h\+\_\+flag,  }\item[{string $\ast$}]{input,  }\item[{string $\ast$}]{output }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{functions_8h_a3dd474492698683f9b1cc4ab1d9ddc34}\label{functions_8h_a3dd474492698683f9b1cc4ab1d9ddc34}} 
 \index{functions.h@{functions.h}!ToInfix@{ToInfix}}
 \index{ToInfix@{ToInfix}!functions.h@{functions.h}}

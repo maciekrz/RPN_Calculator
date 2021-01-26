@@ -1,24 +1,196 @@
-
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <stack>
-#include <sstream>
-#include <cmath>
-#include <map>
-#include <set>
-#include <iterator>
 #include "functions.h"
-#define PI 3.14159265
-
-
 using namespace std;
 
-struct Entry_
+void printArgs(int argc, char** argv)
 {
-    string expr_;
-    string op_;
-};
+    std::cout << "You have entered " << argc
+        << " arguments:" << "\n";
+
+    for (int i = 0; i < argc; ++i)
+        std::cout << argv[i] << "\n";
+
+    std::cout << "\n\n\n";
+}
+
+void showArgs(int argc, char* argv[], bool* o_flag, bool* i_flag, bool* r_flag, bool* c_flag, bool* h_flag, string* input, string* output)
+{
+    for (int i = 1; i < argc; i++)
+    {
+        auto argument = std::string(argv[i]);
+        if (argument == "-i" || argument == "--input")
+        {
+            *input = argv[i + 1];
+            *i_flag = true;
+            std::cout << "Input: " << *input << "\n\n";
+        }
+        else if (argument == "-o" || argument == "--output")
+        {
+            *output = argv[i + 1];
+            *o_flag = true;
+            std::cout << "Output: " << *output << "\n\n";
+        }
+        else if (argument == "-r")
+        {
+            *r_flag = true;
+            cout << "Output notation: POSTFIX  (default is INFIX)\n\n";
+        }
+        else if (argument == "-c")
+        {
+            *c_flag = true;
+            cout << "Interactive mode\n\n";
+        }
+        else if (argument == "-h" || argument == "--help")
+        {
+            *h_flag = true;
+            cout << "\nAvailable flags:\n -i\tinput file path\n -o\toutput file path\n -c\tinteractive mode\n -r\tif present, expressions are written to output file in POSTFIX notation\n\n";
+        }
+    }
+    cout << "\nDone\n";
+}
+
+void interactiveMode(bool o_flag, bool r_flag, string output)
+{
+    ofstream outputfile(output);
+    if (outputfile.fail())
+    {
+        o_flag = false;
+        cout << "\nError: couldn't open output file!\n";
+    }
+
+    string expr = "";
+    system("pause");
+    cout << "\n";
+
+    cout << "Example of postfix notation:\t2 1 - 3 + \nExample of infix notation:\t2 - 1 + 3\n\nAvailable operations:\n+\t-\t*\t/\n^\tsqrt\tsin\tcos\n\nUse of round brackets is also available\n\nType '-q' to exit the program\n\n";
+    while (expr != "-q")
+    {
+        getline(cin, expr);
+        stringstream sstream_to_check_amount1{ expr };
+        if (expr != "-q" && !expr.empty())
+        {
+            if (isCorrect(istream_iterator<string>{sstream_to_check_amount1}, {}))
+            {
+
+                stringstream sstream_to_check1{ expr };
+                stringstream sstream_to_screen1{ expr };
+                stringstream sstream_to_file1{ expr };
+                stringstream sstream_to_string{ expr };
+                string sstream_to_postfix = ToPostfix(istream_iterator<string>{sstream_to_string}, {});
+                stringstream sstream_to_postfix2{ sstream_to_postfix };
+                stringstream sstream_to_postfix3{ sstream_to_postfix };
+                if (isRPN(istream_iterator<string>{sstream_to_check1}, {}))
+                {
+                    cout << "POSTFIX  ->  INFIX\n";
+                    // parsing postfix -> infix, calculating the result from postfix notation
+                    cout << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_screen1}, {}) << "\n\n";
+                    if (o_flag == true)
+                    {
+                        if (r_flag == true)
+                            outputfile << expr << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                        else
+                            outputfile << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                    }
+                }
+                else
+                {
+                    cout << "INFIX  ->  POSTFIX\n";
+                    // parsing infix -> postfix, calculating the result from infix notation
+                    cout << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix2}, {}) << "\n\n";
+                    if (o_flag == true)
+                    {
+                        if (r_flag == true)
+                            outputfile << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                        else
+                            outputfile << expr << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                    }
+                }
+            }
+            else
+            {
+                cout << "***Error: incorrect input! (" << expr << ") Check used operators or the amount of operands and operators!***\n\n";
+                if (o_flag == true)
+                    outputfile << expr << "\t\t~~\tincorrect input!\n";
+            }
+        }
+    }
+    outputfile.close();
+}
+
+void inputMode(bool o_flag, bool r_flag, bool c_flag, string input, string output)
+{
+    ofstream outputfile(output);
+    if (outputfile.fail())
+    {
+        o_flag = false;
+        cout << "\nError: couldn't open output file!\n";
+    }
+    string expr = "";
+    ifstream inputfile(input);
+    if (inputfile.fail()) {
+        cout << "\nError: Input file doesnt exist!\n\n";
+        system("pause");
+        return;
+    }
+
+    int line_count = 1;
+    while (getline(inputfile, expr))
+    {
+        stringstream sstream_to_check_amount1{ expr };
+
+        if (isCorrect(istream_iterator<string>{sstream_to_check_amount1}, {}))
+        {
+            stringstream sstream_to_check1{ expr };
+            stringstream sstream_to_screen1{ expr };
+            stringstream sstream_to_file1{ expr };
+            stringstream sstream_to_string{ expr };
+            string sstream_to_postfix = ToPostfix(istream_iterator<string>{sstream_to_string}, {});
+            stringstream sstream_to_postfix2{ sstream_to_postfix };
+            stringstream sstream_to_postfix3{ sstream_to_postfix };
+            if (isRPN(istream_iterator<string>{sstream_to_check1}, {}))
+            {
+                if (c_flag == true)
+                {
+                    cout << "POSTFIX  ->  INFIX\n" << expr << " = ";
+                    // parsing postfix -> infix, calculating the result from postfix notation
+                    cout << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_screen1}, {}) << "\n\n";
+                }
+                if (o_flag == true)
+                {
+                    if (r_flag == true)
+                        outputfile << expr << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                    else
+                        outputfile << ToInfix(expr) << "  =  " << calcRPN(istream_iterator<string>{sstream_to_file1}, {}) << "\n";
+                }
+            }
+            else
+            {
+                if (c_flag == true)
+                {
+                    cout << "INFIX  ->  POSTFIX\n" << expr << " = ";
+                    // parsing infix -> postfix, calculating the result from infix notation
+                    cout << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix2}, {}) << "\n\n";
+                }
+                if (o_flag == true)
+                {
+                    if (r_flag == true)
+                        outputfile << sstream_to_postfix << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                    else
+                        outputfile << expr << " =  " << calcRPN(istream_iterator<string>{sstream_to_postfix3}, {}) << "\n";
+                }
+            }
+        }
+        else
+        {
+            cout << "***Error: incorrect input at line " << line_count << "! (" << expr << ") Check used operators or the amount of operands and operators!***\n\n";
+            if (o_flag == true)
+                outputfile << expr << "\t\t~~\tincorrect input!\n";
+        }
+        line_count++;
+        system("pause");
+        cout << "\n";
+    }
+    outputfile.close();
+}
 
 bool PrecedenceLess(const string& left, const string& right, bool assoc)
 {
@@ -84,110 +256,6 @@ string ToInfix(const string& src)
     return stack.top().expr_;
 }
 
-template <typename ITERATOR>
-double calcRPN(ITERATOR iter, ITERATOR end) // function to read RPN expression and calculate it
-{
-    stack<double> operands; // stack of operands
-    auto pop_operands([&operands]() // lambda function to get operands from the stack
-        {
-            if (operands.empty())
-            {
-                //cout << "\nError: too little operands!\n";
-            }
-            else
-            {
-                auto top(operands.top());
-                operands.pop(); // deletes the operand from stack
-                return top; // returns the operand
-            }
-        });
-
-    map<string, double(*)(double, double)> operators // map of available operations
-    {
-            {"+", [](double a, double b) {return a + b;}},
-            {"-", [](double a, double b) {return a - b;}},
-            {"*", [](double a, double b) {return a * b;}},
-            {"/", [](double a, double b) {return a / b;}},
-            {"sin", [](double a, double b) {return sin(b * PI / 180);}},
-            {"cos", [](double a, double b) {return cos(b * PI / 180);}},
-            {"^", [](double a, double b) {return pow(a,b);}},
-            {"sqrt", [](double a, double b) {return sqrt(b);}},
-    };
-
-    while (iter != end) // iterator sweeps through stringstream and points either to operands (then if is true) or to operator (then if is false)
-    {
-
-        stringstream ss{ *iter };
-        double value;
-        if (ss >> value) // iterator points to a number - placing doubles into the stack
-            operands.push(value);
-
-        else // iterator points to an operator - calculating the result
-        {
-            try // checks if there is such uperator
-            {
-                operators.at(*iter);
-            }
-            catch (...)
-            {
-                //cout << "\nError: unknown operator: " << *iter << "\n";
-            }
-
-            if (*iter == "sin" || *iter == "cos" || *iter == "sqrt") // sin, cos and sqrt take only one value and need separate code, so they won't pop two elements from the stack
-            {
-                auto right = pop_operands();
-
-
-                auto left = 0;
-                if (right < 0 && *iter == "sqrt")
-                {
-                    cout << "\nError: root of negative number!\n";
-                    return 0;
-                }
-                try
-                {
-                    operands.push(operators.at(*iter)(left, right)); //pushes result to the stack making it available for next operations
-                }
-                catch (...)
-                {
-                    //cout << "\nError: wrong input!\n";
-                }
-            }
-
-            else
-            {
-                auto right = pop_operands();
-                auto left = pop_operands();
-
-                if (right == 0 && *iter == "/") // division by 0
-                {
-                    cout << "\nError: division by 0!\n";
-                    return 0;
-                }
-                else
-                {
-                    try
-                    {
-                        operands.push(operators.at(*iter)(left, right)); //pushes result to the stack making it available for next operations
-                    }
-                    catch (...)
-                    {
-                        //cout << "\nError: wrong input!\n";
-                    }
-                }
-            }
-        }
-        iter++;
-    }
-    if (operands.size() > 1)
-    {
-        //cout << "\nError: too many operands!\n";
-        return 0;
-    }
-    return operands.top();
-}
-
-/////////////////////////////
 
 bool IsOperator(string C)
 {
@@ -246,150 +314,11 @@ bool HasHigherPrecedence(string op1, string op2)
     return op1Weight > op2Weight ? true : false;
 }
 
-template <typename ITERATOR>
-string ToPostfix(ITERATOR iter, ITERATOR end)
-{
-    // Declaring a Stack from Standard template library in C++.
-    stack<string> S;
-    string postfix = ""; // Initialize postfix as an empty string.
-    while (iter != end)
-    {
-        stringstream ss{ *iter };
-        double value;
-        string sgn;
-        string new_value;
 
-        // Else if character is an operand then just append it in res string
-        if (ss >> value)
-        {
-            new_value = to_string(value);
-            new_value.erase(new_value.find_last_not_of('0') + 2, string::npos);
-            postfix += new_value + " ";
 
-        }
-        // Scanning each character from left.
-        // If character is a delimiter, move on.
-        else
-        {
 
-            sgn = *iter;
 
-            if (sgn == " ") continue;
 
-            // If character is operator, check for Higher precedence operator in Stack top
-            // until first opening bracket and pop all such operators
-            // Finally push the current operator on the Stack
-            else if (IsOperator(sgn))
-            {
-                while (!S.empty() && !IsOpeningParenthesis(S.top()) && HasHigherPrecedence(S.top(), sgn))
-                {
-                    postfix += S.top() + " ";
-                    S.pop();
-                }
-                S.push(sgn);
-            }
-            // If opening Parentheses simply push it on the Stack
-            else if (IsOpeningParenthesis(sgn))
-            {
-                S.push(sgn);
-            }
-            // If Closing Parenthesis then pop all the operators and append to result string
-            else if (IsClosingParenthesis(sgn))
-            {
-                while (!S.empty() && !IsOpeningParenthesis(S.top())) {
-                    postfix += S.top() + " ";
-                    S.pop();
-                }
-                S.pop();
-            }
-        }
-        iter++;
-    }
-
-    // pop and append all operators until stack is not empty
-    while (!S.empty()) {
-        postfix += S.top() + " ";
-        S.pop();
-    }
-
-    return postfix;
-}
-
-template <typename ITERATOR>
-bool isRPN(ITERATOR iter, ITERATOR end)
-{
-    int current_pos = 0;
-    int last_num_pos = -2;
-
-    while (iter != end)
-    {
-        stringstream ss{ *iter };
-        double value;
-
-        if (current_pos == 1)
-            if (*iter == "sin" || *iter == "cos" || *iter == "sqrt")
-                return true;
-
-        if (current_pos == 0)
-        {
-            if (*iter == "sin" || *iter == "cos" || *iter == "sqrt")
-                return false;
-        }
-        if (ss >> value)
-        {
-            if (last_num_pos == current_pos - 1)
-            {
-                return true;
-            }
-            last_num_pos = current_pos;
-        }
-        current_pos++;
-        iter++;
-    }
-
-    return false;
-}
-
-template <typename ITERATOR>
-bool isCorrect(ITERATOR iter, ITERATOR end)
-{
-    int operator_count = 0;
-    int s_operator_count = 0;
-    int operand_count = 0;
-
-    while (iter != end)
-    {
-        stringstream ss{ *iter };
-        double value;
-
-        if (ss >> value)
-        {
-            operand_count++;
-        }
-        else if (*iter == "+" || *iter == "-" || *iter == "*" || *iter == "/" || *iter == "^")
-        {
-            operator_count++;
-        }
-        else if (*iter != "(" && *iter != ")" && *iter != "sin" && *iter != "cos" && *iter != "sqrt")
-        {
-            cout << "\nUnknown operator (" << *iter << ")!\n";
-            return 0;
-        }
-        iter++;
-    }
-    if (operand_count == operator_count + 1)
-        return true;
-    else if (operand_count > operator_count + 1)
-    {
-        cout << "\nToo many operands!\n";
-        return false;
-    }
-    else if (operand_count < operator_count + 1)
-    {
-        cout << "\nToo many operators!\n";
-        return false;
-    }
-}
 
 
 
